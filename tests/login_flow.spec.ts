@@ -1,7 +1,8 @@
-import {test, expect} from '@playwright/test';
 // const addNumbers = (a:number, b:number): number => {
 //     return a + b;
 // }
+
+import {test, expect} from '@playwright/test';
 
 interface LoginResponse {
     token: string;
