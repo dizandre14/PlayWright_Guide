@@ -3,10 +3,6 @@ import {test, expect} from '@playwright/test';
 //     return a + b;
 // }
 
-/** * TYPESCRIPT: Define the "shape" of our login data.
- * This prevents typos and shows you know how to handle objects in TS.
- */
-
 interface LoginResponse {
     token: string;
     userStatus: string;
