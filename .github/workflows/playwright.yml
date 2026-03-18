@@ -1,0 +1,28 @@
+name: Playwright Tests
+
+# 1. WHEN SHOULD THIS RUN?
+on:
+  push:
+    branches: [ main, master ]
+
+# 2. WHAT SHOULD IT DO?
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest # This is the "cloud computer" GitHub spins up
+
+    steps:
+    - uses: actions/checkout@v4 # Grabs your code from the repo
+    
+    - uses: actions/setup-node@v4 # Installs Node.js on the cloud computer
+      with:
+        node-version: lts/*
+        
+    - name: Install dependencies
+      run: npm ci # Like npm install, but stricter for automated environments
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps # Downloads Chromium/Firefox in the cloud
+      
+    - name: Run Playwright tests
+      run: npx playwright test # The actual command that runs your script
